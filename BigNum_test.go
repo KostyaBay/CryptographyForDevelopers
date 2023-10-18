@@ -56,7 +56,7 @@ func TestShiftR(t *testing.T) {
 	hex := "51bf608414ad5726a3c1bec098f77b1b54ffb2787f8d528a74c1d7fde6470ea4"
 	num.setHex(hex)
 	result := ShiftR(num, n)
-	if result.getHex() != "28dfb0420a56ab9351e0df604c7bbd8daa7fd93c3fc6a9453a60ebfef323875\n" {
+	if result.getHex() != "28dfb0420a56ab9351e0df604c7bbd8daa7fd93c3fc6a9453a60ebfef323875" {
 		t.Errorf("Expected another number, but got %d", result)
 	}
 }
@@ -66,7 +66,7 @@ func TestShiftL(t *testing.T) {
 	n := 5
 	hex := "51bf608414ad5726a3c1bec098f77b1b54ffb2787f8d528a74c1d7fde6470ea4"
 	num.setHex(hex)
-	result := ShiftR(num, n)
+	result := ShiftL(num, n)
 	if result.getHex() != "a37ec108295aae4d47837d8131eef636a9ff64f0ff1aa514e983affbcc8e1d480" {
 		t.Errorf("Expected another number, but got %d", result)
 	}
