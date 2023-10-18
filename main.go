@@ -21,21 +21,6 @@ func (BG *BigNum) setHex(hex string) {
 
 		BG.arr = append(BG.arr, newHex)
 	}
-	//for i := 0; i < len(hex); i += 16 {
-	//
-	//	tempRem := len(hex) % 16
-	//	if tempRem != 0 {
-	//		temp := 16 - tempRem
-	//		// Доповнення рядка "0" до необхідної довжини
-	//		for temp > 0 {
-	//			hex = "0" + hex
-	//			temp--
-	//		}
-	//	} else {
-	//		newHex, _ = strconv.ParseUint(hex[i:(i+16)], 16, 64)
-	//		BG.arr = append(BG.arr, newHex)
-	//	}
-	//}
 }
 
 func (BG BigNum) getHex() string {
@@ -50,14 +35,6 @@ func (BG BigNum) getHex() string {
 		resString += tempString
 	}
 	return resString
-	//for i := 0; i < len(BG.arr); i++ {
-	//	tempString := strconv.FormatUint(BG.arr[i], 16)
-	//	if len(tempString) != 16 {
-	//		tempString = "0" + tempString
-	//	}
-	//	resString += tempString
-	//}
-	//return resString
 }
 
 func Inverse(num BigNum) BigNum {
