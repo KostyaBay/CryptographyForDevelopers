@@ -11,33 +11,53 @@ type BigNum struct {
 
 func (BG *BigNum) setHex(hex string) {
 	var newHex uint64
-	for i := 0; i < len(hex); i += 16 {
+	for i := len(hex); i > 0; i -= 16 {
 
-		tempRem := len(hex) % 16
-		if tempRem != 0 {
-			temp := 16 - tempRem
-			// Доповнення рядка "0" до необхідної довжини
-			for temp > 0 {
-				hex = "0" + hex
-				temp--
-			}
+		if i >= 16 {
+			newHex, _ = strconv.ParseUint(hex[i-16:i], 16, 64)
 		} else {
-			newHex, _ = strconv.ParseUint(hex[i:(i+16)], 16, 64)
-			BG.arr = append(BG.arr, newHex)
+			newHex, _ = strconv.ParseUint(hex[:i], 16, 64)
 		}
+
+		BG.arr = append(BG.arr, newHex)
 	}
+	//for i := 0; i < len(hex); i += 16 {
+	//
+	//	tempRem := len(hex) % 16
+	//	if tempRem != 0 {
+	//		temp := 16 - tempRem
+	//		// Доповнення рядка "0" до необхідної довжини
+	//		for temp > 0 {
+	//			hex = "0" + hex
+	//			temp--
+	//		}
+	//	} else {
+	//		newHex, _ = strconv.ParseUint(hex[i:(i+16)], 16, 64)
+	//		BG.arr = append(BG.arr, newHex)
+	//	}
+	//}
 }
 
 func (BG BigNum) getHex() string {
-	var resString string
-	for i := 0; i < len(BG.arr); i++ {
+	var resString = strconv.FormatUint(BG.arr[len(BG.arr)-1], 16)
+	for i := len(BG.arr) - 2; i >= 0; i-- {
 		tempString := strconv.FormatUint(BG.arr[i], 16)
 		if len(tempString) != 16 {
-			tempString = "0" + tempString
+			for j := len(tempString); j < 16; j++ {
+				tempString = "0" + tempString
+			}
 		}
 		resString += tempString
 	}
 	return resString
+	//for i := 0; i < len(BG.arr); i++ {
+	//	tempString := strconv.FormatUint(BG.arr[i], 16)
+	//	if len(tempString) != 16 {
+	//		tempString = "0" + tempString
+	//	}
+	//	resString += tempString
+	//}
+	//return resString
 }
 
 func Inverse(num BigNum) BigNum {
@@ -101,10 +121,10 @@ func ShiftR(num BigNum, n int) BigNum {
 		resShiftR.setHex("0")
 	}
 	num.arr = num.arr[trash_el:]
-	resShiftR.arr = append(num.arr, num.arr[0]>>tempRem)
+	resShiftR.arr = append(resShiftR.arr, num.arr[0]>>tempRem)
 	for i := 1; i < len(num.arr); i++ {
 		resShiftR.arr[i-1] += ((^uint64(0) >> (64 - tempRem)) & num.arr[i]) << (64 - tempRem)
-		resShiftR.arr = append(num.arr, num.arr[i]>>tempRem)
+		resShiftR.arr = append(resShiftR.arr, num.arr[i]>>tempRem)
 	}
 	return resShiftR
 }
@@ -116,15 +136,15 @@ func ShiftL(num BigNum, n int) BigNum {
 	tempRem := n % 64
 
 	for i := 0; i < trash_el; i++ {
-		resShiftL.setHex("0")
+		resShiftL.arr = append(resShiftL.arr, 0)
 	}
 
 	for i := 0; i < len(num.arr); i++ {
 		resShiftL.arr = append(resShiftL.arr, (num.arr[i]<<tempRem)+SaveBits)
-		SaveBits = (^((uint64(0) >> tempRem) & num.arr[i]) >> (64 - tempRem))
+		SaveBits = (^(^uint64(0) >> tempRem) & num.arr[i]) >> (64 - tempRem)
 	}
 
-	if num.arr[len(num.arr)-1] & ^(uint64(0)>>tempRem) != 0 {
+	if num.arr[len(num.arr)-1] & ^(^uint64(0)>>tempRem) != 0 {
 		resShiftL.arr = append(resShiftL.arr, num.arr[len(num.arr)-1]>>(64-tempRem))
 	}
 
@@ -150,4 +170,3 @@ func main() {
 	resShiftL = ShiftL(num1, 5)
 	fmt.Println(" 1<<: " + resShiftL.getHex())
 }
-
