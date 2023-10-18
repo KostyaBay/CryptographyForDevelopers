@@ -121,10 +121,10 @@ func ShiftL(num BigNum, n int) BigNum {
 
 	for i := 0; i < len(num.arr); i++ {
 		resShiftL.arr = append(resShiftL.arr, (num.arr[i]<<tempRem)+SaveBits)
-		SaveBits = (^uint64((0xffffffffffffffff>>tempRem)&num.arr[i]) >> (64 - tempRem))
+		SaveBits = (^((uint64(0) >> tempRem) & num.arr[i]) >> (64 - tempRem))
 	}
 
-	if num.arr[len(num.arr)-1] & ^uint64(0xffffffffffffffff>>tempRem) != 0 {
+	if num.arr[len(num.arr)-1] & ^(uint64(0)>>tempRem) != 0 {
 		resShiftL.arr = append(resShiftL.arr, num.arr[len(num.arr)-1]>>(64-tempRem))
 	}
 
@@ -150,3 +150,4 @@ func main() {
 	resShiftL = ShiftL(num1, 5)
 	fmt.Println(" 1<<: " + resShiftL.getHex())
 }
+
