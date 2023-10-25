@@ -1,2 +1,1 @@
-# CryptographyForDevelopers
 #### Distributed Lab
