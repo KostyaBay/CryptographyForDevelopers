@@ -85,18 +85,23 @@ func PBox_no8bit_Inv(ptext string) string {
 }
 
 func main() {
-	tstring := "decision"
-	tstring_p := PBox_no8bit(tstring)
-	println("String PBox: " + tstring_p)
-	println("String PboxInv: " + PBox_no8bit_Inv(tstring_p) + "\n")
+	// Закоментуваний виклик додаткових методів, які не задовільняють умовам завдання
+	//tstring := "decision"
+	//tstring_p := PBox_no8bit(tstring)
+	//println("String PBox: " + tstring_p)
+	//println("String PboxInv: " + PBox_no8bit_Inv(tstring_p) + "\n")
 
+	// Ініціалізація вхідного тексту, яке буде використовуватись для перетворень:
 	text := uint8(129) //10000001
+
+	//Виклик методів алгоритму P-блоку
 	text_p := PBox(text)
 	print("Pbox: ")
 	println(text_p)
 	print("PboxInv: ")
 	println(PBoxInv(text_p))
 
+	//Виклик методів алгоритму S-блоку
 	text_s := SBox(text)
 	print("\nSbox: ")
 	println(text_s)
