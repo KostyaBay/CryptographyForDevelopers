@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strings"
 )
 
@@ -96,16 +97,12 @@ func main() {
 
 	//Виклик методів алгоритму P-блоку
 	text_p := PBox(text)
-	print("Pbox: ")
-	println(text_p)
-	print("PboxInv: ")
-	println(PBoxInv(text_p))
+	fmt.Println("Pbox:", text_p)
+	fmt.Println("PboxInv:", PBoxInv(text_p))
 
 	//Виклик методів алгоритму S-блоку
 	text_s := SBox(text)
-	print("\nSbox: ")
-	println(text_s)
-	print("SboxInv: ")
-	println(SBoxInv(text_s))
+	fmt.Println("\nSbox:", text_s)
+	fmt.Println("SboxInv:", SBoxInv(text_s))
 
 }
