@@ -10,4 +10,4 @@
 
 3. **Тестування ключів на випадковість за стандартом FIPS-140** 
 
-[KeyTesting_FIPS140](https://github.com/KostyaBay/CryptographyForDevelopers/tree/main/KeyTesting_FIPS140 "KeyTesting_FIPS140") - Реалізація монобітного тесту, тесту максимальної довжини серії, тесту Поккера, тесту довжин серій.
+[KeyTesting_FIPS140](https://github.com/KostyaBay/CryptographyForDevelopers/tree/main/KeyTesting_FIPS140 "KeyTesting_FIPS140") - Реалізація монобітного тесту, тесту максимальної довжини серії, тесту Поккера та тесту довжин серій.
