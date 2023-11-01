@@ -7,3 +7,7 @@
 2. **S-блок та P-блок** 
 
 [SBox_and_PBox](https://github.com/KostyaBay/CryptographyForDevelopers/tree/main/SBox_and_PBox "SBox_and_PBox") - Власна програмна реалізація алгоритмів S-блоку та P-блоку (пряме та зворотне перетворення).
+
+3. **Тестування ключів на випадковість за стандартом FIPS-140** 
+
+[KeyTesting_FIPS140](https://github.com/KostyaBay/CryptographyForDevelopers/tree/main/KeyTesting_FIPS140 "KeyTesting_FIPS140") - Реалізація монобітного тесту, тесту максимальної довжини серії, тесту Поккера, тесту довжин серій.
