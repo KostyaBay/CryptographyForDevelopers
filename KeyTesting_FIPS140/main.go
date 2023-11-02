@@ -13,6 +13,7 @@ func GenRandomBitChain() []uint32 {
 	return BitChain
 }
 
+// Реалізація монобітного тесту
 func MonobitTest(BitChain []uint32) bool {
 	counter := 0
 	for j := 0; j < 625; j++ {
@@ -36,6 +37,7 @@ func MonobitTest(BitChain []uint32) bool {
 	return false
 }
 
+// Реалізація тесту максимальної довжини серії
 func LongRunsTest(BitChain []uint32) bool {
 	pointerBit := uint32(0)
 	curCount := 0
@@ -53,30 +55,8 @@ func LongRunsTest(BitChain []uint32) bool {
 				if curCount > maxCount {
 					maxCount = curCount
 				}
+				curCount = 1
 			}
-			//
-			//if pointerBit == 0 {
-			//
-			//	if tempValBit == 1 {
-			//		if counter1 >= counter1 {
-			//			counter1++
-			//		}
-			//		pointerBit = 1
-			//	}
-			//	//break
-			//
-			//}
-			//
-			//if pointerBit == 1 {
-			//
-			//	if tempValBit == 0 {
-			//		if counter0 >= counter0 {
-			//			counter0++
-			//		}
-			//		pointerBit = 0
-			//	}
-			//	//break
-			//}
 		}
 	}
 
@@ -86,6 +66,7 @@ func LongRunsTest(BitChain []uint32) bool {
 	return false
 }
 
+// Реалізація тесту Поккера
 func PokerTest(BitChain []uint32) bool {
 	var counter [16]int
 	var X float32
@@ -111,24 +92,71 @@ func PokerTest(BitChain []uint32) bool {
 	return false
 }
 
+// Реалізація тесту довжин серій
 func RunsTest(BitChain []uint32) bool {
+	pointerBit := (BitChain[0] >> 31) & uint32(1)
+	curCount := 0
+	maxCount := 0
+	var arrSeries [2][6]int
+	for j := 0; j < 625; j++ {
+
+		for i := 31; i >= 0; i-- {
+			tempValBit := BitChain[j] >> i
+			tempValBit = tempValBit & uint32(1)
+
+			if tempValBit == pointerBit {
+				curCount += 1
+			} else {
+				pointerBit = tempValBit
+				if curCount > maxCount {
+					maxCount = curCount
+				}
+				if curCount > 6 {
+					curCount = 6
+				}
+				arrSeries[pointerBit][curCount-1] += 1
+				pointerBit = tempValBit
+				curCount = 1
+			}
+		}
+	}
+
+	if curCount > maxCount {
+		maxCount = curCount
+	}
+
+	if curCount > 6 {
+		curCount = 6
+	}
+	arrSeries[pointerBit][curCount-1] += 1
+
+	compare_intervals := [6][2]int{{2267, 2733}, {1079, 1421}, {502, 748}, {223, 402}, {90, 223}, {90, 223}} // [min][max] {{min, max}}
+
+	for i := 0; i < 6; i++ {
+		for j := 0; j < 2; j++ {
+			if (arrSeries[i][j] < compare_intervals[i][1]) && (arrSeries[i][j] > compare_intervals[i][0]) {
+				return true
+			}
+		}
+	}
+
 	return false
 }
 
 func main() {
-	BitChain := GenRandomBitChain()
-	fmt.Print("BitChain: ")
-	fmt.Println(BitChain)
+	for {
+		BitChain := GenRandomBitChain()
 
-	fmt.Print("MonobitTest: ")
-	fmt.Println(MonobitTest(BitChain))
+		fmt.Print("BitChain: ")
+		fmt.Println(BitChain)
 
-	fmt.Print("LongRunsTest: ")
-	fmt.Println(LongRunsTest(BitChain))
+		fmt.Println("MonobitTest:", MonobitTest(BitChain), "|", "LongRunsTest:", LongRunsTest(BitChain), "|", "PokerTest:", PokerTest(BitChain), "|", "RunsTest:", RunsTest(BitChain))
 
-	fmt.Print("PokerTest: ")
-	fmt.Println(PokerTest(BitChain))
-
-	fmt.Print("RunsTest: ")
-	fmt.Println(RunsTest(BitChain))
+		if MonobitTest(BitChain) && LongRunsTest(BitChain) && PokerTest(BitChain) && RunsTest(BitChain) {
+			fmt.Println("This sequence of 20,000 bits is random.")
+			break
+		} else {
+			fmt.Println("This sequence of 20,000 bits is not random.")
+		}
+	}
 }
