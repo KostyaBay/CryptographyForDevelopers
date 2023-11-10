@@ -27,14 +27,14 @@ _При вірному знаходженні хешу і співпадінні
 PASS
 
 _Результат порівняння швидкодії власної реалізації з бібліотечною реалізацією на прикладі тестів Benchmark:_ <br>
-1. Вхідне повідомлення: "1ABC104FE402BD" ![BenchmarkTest1](/BenchmarkTest/Test1_%221ABC104FE402BD%22.png)
+1. Вхідне повідомлення: "1ABC104FE402BD" ![BenchmarkTest1](/BenchmarkTest/Test1_1ABC104FE402BD.png)
    | goos | goarch | pkg   | cpu                                     | Benchmark               | Iterations | Time/op     |
    |------|--------|-------|-----------------------------------------|-------------------------|------------|-------------|
    | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1LibraryTest         | 4125369     | 265.7 ns/op |
    | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1OwnTest             | 273588     | 3892 ns/op  |
-2. Вхідне повідомлення: "cryptography" ![BenchmarkTest2](/BenchmarkTest/Test2_%22cryptography%22.png)
-3. Вхідне повідомлення: "123" ![BenchmarkTest3](/BenchmarkTest/Test3_%22123%22.png)
-4. Вхідне повідомлення: "Own implementation of the SHA-1 hashing algorithm" ![BenchmarkTest4](/BenchmarkTest/Test4_%22Sentence%22.png)
+2. Вхідне повідомлення: "cryptography" ![BenchmarkTest2](/BenchmarkTest/Test2_cryptography.png)
+3. Вхідне повідомлення: "123" ![BenchmarkTest3](/BenchmarkTest/Test3_123.png)
+4. Вхідне повідомлення: "Own implementation of the SHA-1 hashing algorithm" ![BenchmarkTest4](/BenchmarkTest/Test4_Sentence.png)
 
 Для запуску коду потрібно:
 -
