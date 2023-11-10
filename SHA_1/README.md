@@ -18,23 +18,40 @@
 
 Для власної реалізації алгоритму гешування в якості вхідного повідомлення візьмемо - "1ABC104FE402BD". <br>
 _При вірному знаходженні хешу отримуємо наступне:_ <br>
-SHA1 to  1ABC104FE402BD  is  [219 91 87 3 107 122 11 210 113 177 10 249 147 142 223 197 125 112 45 224] <br>
-SHA1 to  1ABC104FE402BD  is  db5b57036b7a0bd271b10af9938edfc57d702de0
+| SHA1 to 1ABC104FE402BD is | [219 91 87 3 107 122 11 210 113 177 10 249 147 142 223 197 125 112 45 224] |
+|---------------------------|--------------------------------------------------------|
+| SHA1 to 1ABC104FE402BD is | db5b57036b7a0bd271b10af9938edfc57d702de0                                   |
 
 _При вірному знаходженні хешу і співпадінні в тесті на співпадіння гешу з бібліотечною реалізацією отримували наступне:_ <br>
-=== RUN   TestHash <br>
---- PASS: TestHash (0.00s) <br>
+```
+=== RUN   TestHash
+--- PASS: TestHash (0.00s)
 PASS
+```
 
 _Результат порівняння швидкодії власної реалізації з бібліотечною реалізацією на прикладі тестів Benchmark:_ <br>
-1. Вхідне повідомлення: "1ABC104FE402BD" ![BenchmarkTest1](/BenchmarkTest/Test1_1ABC104FE402BD.png)
-   | goos | goarch | pkg   | cpu                                     | Benchmark               | Iterations | Time/op     |
-   |------|--------|-------|-----------------------------------------|-------------------------|------------|-------------|
-   | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1LibraryTest         | 4125369     | 265.7 ns/op |
-   | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1OwnTest             | 273588     | 3892 ns/op  |
-2. Вхідне повідомлення: "cryptography" ![BenchmarkTest2](/BenchmarkTest/Test2_cryptography.png)
-3. Вхідне повідомлення: "123" ![BenchmarkTest3](/BenchmarkTest/Test3_123.png)
-4. Вхідне повідомлення: "Own implementation of the SHA-1 hashing algorithm" ![BenchmarkTest4](/BenchmarkTest/Test4_Sentence.png)
+1. Вхідне повідомлення: "1ABC104FE402BD"
+   | goos   | goarch | pkg   | cpu                                     | Benchmark              | Iterations | Time/op    |
+   |--------|--------|-------|-----------------------------------------|------------------------|------------|------------|
+   | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1LibraryTest        | 5644189    | 219.0 ns/op |
+   | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1OwnTest            | 321092     | 4478 ns/op  |
+2. Вхідне повідомлення: "cryptography"
+   | goos   | goarch | pkg   | cpu                                     | Benchmark              | Iterations | Time/op    |
+   |--------|--------|-------|-----------------------------------------|------------------------|------------|------------|
+   | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1LibraryTest        | 5769531    | 210.3 ns/op |
+   | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1OwnTest            | 317234     | 4914 ns/op  |
+3. Вхідне повідомлення: "123"
+   | goos   | goarch | pkg   | cpu                                     | Benchmark              | Iterations | Time/op    |
+   |--------|--------|-------|-----------------------------------------|------------------------|------------|------------|
+   | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1LibraryTest        | 5581586    | 227.4 ns/op |
+   | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1OwnTest            | 313344     | 3871 ns/op  |
+4. Вхідне повідомлення: "Own implementation of the SHA-1 hashing algorithm." (sentence)
+   | goos   | goarch | pkg   | cpu                                     | Benchmark              | Iterations | Time/op    |
+   |--------|--------|-------|-----------------------------------------|------------------------|------------|------------|
+   | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1LibraryTest        | 4760408    | 219.0 ns/op |
+   | darwin | amd64  | SHA-1 | Intel(R) Core(TM) i5-5350U CPU @ 1.80GHz | SHA1OwnTest            | 348031     | 4569 ns/op  |
+
+Також всі результати тестів Benchmark містяться в папці BenchmarkTest даного проекту.
 
 Для запуску коду потрібно:
 -
