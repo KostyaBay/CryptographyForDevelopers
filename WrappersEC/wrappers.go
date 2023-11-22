@@ -23,24 +23,38 @@ func BasePointGGet() (point ECPoint) {
 func ECPointGen(x, y *big.Int) (point ECPoint) {
 	return
 }
+
+// DOES P ∈ CURVE?
 func IsOnCurveCheck(a ECPoint) (c bool) {
 	return
-} //DOES P ∈ CURVE?
+}
+
+// P + Q
 func AddECPoints(a, b ECPoint) (c ECPoint) {
 	return
-} //P + Q
+}
+
+// 2P
 func DoubleECPoints(a ECPoint) (c ECPoint) {
 	return
-} //2P
+}
+
+// k * P
 func ScalarMult(k big.Int, a ECPoint) (c ECPoint) {
 	return
-} //k * P
+}
+
+// Serialize point
 func ECPointToString(point ECPoint) (s string) {
 	return
-} //Serialize point
+}
+
+// Deserialize point
 func StringToECPoint(s string) (point ECPoint) {
 	return
-} //Deserialize point
+}
+
+// Print point
 func PrintECPoint(point ECPoint) {
 	return
-} //Print point
+}
