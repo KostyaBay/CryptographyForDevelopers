@@ -11,7 +11,7 @@ func SetRandom(bits int) (*big.Int, error) {
 	return rand.Prime(rand.Reader, bits)
 }
 
-func main() {
+func TestCorrect() (ECPoint, ECPoint) {
 
 	//k*(d*G) = d*(k*G)
 
@@ -34,4 +34,10 @@ func main() {
 	} else {
 		fmt.Println("False: H2 not equal H4!")
 	}
+
+	return H2, H4
+}
+
+func main() {
+	TestCorrect()
 }
