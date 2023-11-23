@@ -21,7 +21,7 @@
 | Функція                      | Метод                       |  Реалізовано  |
 |------------------------------|-----------------------------|:-------------:|
 | ● Отримання G-генератора     | BasePointGGet() (point ECPoint) |:heavy_check_mark:|
-| ● Створення ECPoint          | ECPointGen(x, y *big.Int) (p ECPoint) |:heavy_check_mark:|
+| ● Створення точки ел. кривої | ECPointGen(x, y *big.Int) (p ECPoint) |:heavy_check_mark:|
 | ● Перевірка належності точки | IsOnCurveCheck(p ECPoint) (c bool) |:heavy_check_mark:|
 | ● Додавання різних точок кривої     | AddECPoints(a, b ECPoint) (c ECPoint) |:heavy_check_mark:|
 | ● Додавання однакових точок кривої  | DoubleECPoints(a ECPoint) (c ECPoint) |:heavy_check_mark:|
