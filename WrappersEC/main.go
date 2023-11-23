@@ -1,6 +1,7 @@
 package main
 
 import (
+	"WrappersEC/wrappers"
 	"crypto/rand"
 	"fmt"
 	"math/big"
@@ -11,19 +12,19 @@ func SetRandom(bits int) (*big.Int, error) {
 	return rand.Prime(rand.Reader, bits)
 }
 
-func TestCorrect() (ECPoint, ECPoint) {
+func TestCorrect() (wrappers.ECPoint, wrappers.ECPoint) {
 
 	//k*(d*G) = d*(k*G)
 
-	G := BasePointGGet()
+	G := wrappers.BasePointGGet()
 	k, _ := SetRandom(256)
 	d, _ := SetRandom(256)
 
-	H1 := ScalarMult(d, G)
-	H2 := ScalarMult(k, H1)
+	H1 := wrappers.ScalarMult(d, G)
+	H2 := wrappers.ScalarMult(k, H1)
 
-	H3 := ScalarMult(k, G)
-	H4 := ScalarMult(d, H3)
+	H3 := wrappers.ScalarMult(k, G)
+	H4 := wrappers.ScalarMult(d, H3)
 
 	fmt.Println(H2) // print H2
 	fmt.Println(H4) // print H4

@@ -17,10 +17,15 @@
 
 :small_blue_diamond: Результат:
 
-| Функція                   | Метод                       |  Реалізовано  |
-|---------------------------|-----------------------------|:-------------:|
-| ● Отримання G-генератора | BasePointGGet() (point ECPoint)      |:heavy_check_mark:|
+Обгортки бібліотечних функцій містяться у папці wrappers (файл `wrappers.go`):
+| Функція                      | Метод                       |  Реалізовано  |
+|------------------------------|-----------------------------|:-------------:|
+| ● Отримання G-генератора     | BasePointGGet() (point ECPoint)      |:heavy_check_mark:|
+| ● Створення ECPoint          | ECPointGen(x, y *big.Int) (p ECPoint)      |:heavy_check_mark:|
+| ● Перевірка належності точки | IsOnCurveCheck(p ECPoint) (c bool)      |:heavy_check_mark:|
+| ● Додавання точок кривої     | AddECPoints(a, b ECPoint) (c ECPoint)      |:heavy_check_mark:|
 
+Перевірка коректності відбувається у файлі `main.go`:
 | Тестування         | Метод                      |   Реалізовано    |
 |--------------------|----------------------------|:----------------:|
 | ● Тест коректності | TestCorrect() (ECPoint, ECPoint) |:heavy_check_mark:|
