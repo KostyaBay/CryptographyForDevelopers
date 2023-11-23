@@ -20,10 +20,15 @@
 Обгортки бібліотечних функцій містяться у папці wrappers (файл `wrappers.go`):
 | Функція                      | Метод                       |  Реалізовано  |
 |------------------------------|-----------------------------|:-------------:|
-| ● Отримання G-генератора     | BasePointGGet() (point ECPoint)      |:heavy_check_mark:|
-| ● Створення ECPoint          | ECPointGen(x, y *big.Int) (p ECPoint)      |:heavy_check_mark:|
-| ● Перевірка належності точки | IsOnCurveCheck(p ECPoint) (c bool)      |:heavy_check_mark:|
-| ● Додавання точок кривої     | AddECPoints(a, b ECPoint) (c ECPoint)      |:heavy_check_mark:|
+| ● Отримання G-генератора     | BasePointGGet() (point ECPoint) |:heavy_check_mark:|
+| ● Створення ECPoint          | ECPointGen(x, y *big.Int) (p ECPoint) |:heavy_check_mark:|
+| ● Перевірка належності точки | IsOnCurveCheck(p ECPoint) (c bool) |:heavy_check_mark:|
+| ● Додавання різних точок кривої     | AddECPoints(a, b ECPoint) (c ECPoint) |:heavy_check_mark:|
+| ● Додавання однакових точок кривої  | DoubleECPoints(a ECPoint) (c ECPoint) |:heavy_check_mark:|
+| ● Множення точки на скаляр   | ScalarMult(k *big.Int, a ECPoint) (c ECPoint) |:heavy_check_mark:|
+| ● Точка у вигляді рядка      | ECPointToString(p ECPoint) (s string) |:heavy_check_mark:|
+| ● Рядок у вигляді точки      | StringToECPoint(s string) (p ECPoint) |:heavy_check_mark:|
+| ● Виведення координат точки  | PrintECPoint(p ECPoint) |:heavy_check_mark:|
 
 Перевірка коректності відбувається у файлі `main.go`:
 | Тестування         | Метод                      |   Реалізовано    |
