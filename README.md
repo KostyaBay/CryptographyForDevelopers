@@ -19,3 +19,7 @@
 5. **Написання обгортки для зручного використання бібліотеки на еліптичних кривих** 
 
 [WrappersEC](https://github.com/KostyaBay/CryptographyForDevelopers/tree/main/WrappersEC "WrappersEC") - Написання власних обгорток для бібліотечних методів, які працюють з алгеброю на еліптичних кривих; перевірка коректності роботи перетворень в групі точок еліптичної кривої.
+
+6. **Реалізація алгоритму цифрового підпису** 
+
+[DigitalSignature](https://github.com/KostyaBay/CryptographyForDevelopers/tree/main/DigitalSignature "DigitalSignature") - Реалізація RSA, або ECDSA, або Schnorr, або Ring traceable signatures; тестування та демонстрація роботи.
