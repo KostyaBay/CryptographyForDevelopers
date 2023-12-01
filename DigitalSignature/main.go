@@ -11,10 +11,6 @@ import (
 func TestDigSign() {
 	reader := bufio.NewReader(os.Stdin)
 	var bytes []byte
-	var mess1 string
-	fmt.Print("- Enter the message: ")
-	bytes, _, _ = reader.ReadLine()
-	mess1 = string(bytes)
 
 	var length int
 	fmt.Print("- Enter key length (128/256/512/1024 hex bytes) for GenKey: ")
@@ -22,6 +18,11 @@ func TestDigSign() {
 
 	d, e, n := RSA.GenKey(length)
 	fmt.Println("- Private Key: "+d.Text(16)+" ; "+n.Text(16), "\n- Public Key: "+e.Text(16)+" ; "+n.Text(16)) // "\nn:", n.Text(16))
+
+	var mess1 string
+	fmt.Print("- Enter the message: ")
+	bytes, _, _ = reader.ReadLine()
+	mess1 = string(bytes)
 
 	var sk1, pk1, p2 string
 	fmt.Print("- Enter 1 part of your Private Key(d): ")
