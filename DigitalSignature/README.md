@@ -24,7 +24,7 @@
 | ● Підписування повідомлення | DigitSign (mess string, e, n *big.Int) |:heavy_check_mark:|
 | ● Верифікація підпису | Verification (mess string, c, d, n *big.Int) |:heavy_check_mark:|
 
-Тестування та демонсрація відбуваються у файлі `main.go`:
+Тестування та демонстрація відбуваються у файлі `main.go`:
 | Тестування         | Метод                      |   Реалізовано    |
 |--------------------|----------------------------|:----------------:|
 | ● Тест використання ЦП | TestDigSign() |:heavy_check_mark:|
@@ -36,24 +36,24 @@
 - самостійно вводити згенерований підпис для верифікації (digital signature).
 
 Приклад генерації ключів (довжиною 2048 бітів):
-![2048_test_DS_1.png](..%2F..%2F..%2F..%2FDesktop%2F2048_test_DS_1.png)
+![2048_test_DS_1](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/d0ec8ee4-68f9-4073-bd25-f0ba52d1308a)
 
 Приклад підпису повідомлення *"Message for test!"*:
-![2048_test_DS_2.png](..%2F..%2F..%2F..%2FDesktop%2F2048_test_DS_2.png)
+![2048_test_DS_2](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/8f6ae100-76ed-46ea-baba-226ef4d402cb)
 
 1 part та 2 part of keys розділені " ; ".
 
 Приклад верифікації підписаного повідомлення:
-![2048_test_DS_3.png](..%2F..%2F..%2F..%2FDesktop%2F2048_test_DS_3.png)
+![2048_test_DS_3](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/d5670cb9-58db-46fe-8755-0c6f541f30c4)
 
 Приклад верифікації пошкодженого підпису:
-![2048_Negtest1_DS.png](..%2F..%2F..%2F..%2FDesktop%2F2048_Negtest1_DS.png)
+![2048_Negtest1_DS](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/dae0892e-48a1-442e-9ec7-cdfc059e279d)
 
 Приклад верифікації пошкодженого повідомлення:
-![2048_Negtest2_DS.png](..%2F..%2F..%2F..%2FDesktop%2F2048_Negtest2_DS.png)
+![2048_Negtest2_DS](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/a5131344-d0ce-4597-931d-35ed2032da00)
 
 Приклад верифікації пошкодженого відкритого ключа (Public Key):
-![2048_Negtest3_DS.png](..%2F..%2F..%2F..%2FDesktop%2F2048_Negtest3_DS.png)
+![2048_Negtest3_DS](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/ca00a091-1691-49d0-b20a-368d481eeb76)
 
 Для запуску коду потрібно:
 -
