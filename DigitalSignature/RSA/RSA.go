@@ -29,14 +29,14 @@ func GenKey(keyLength int) (sk1, pk1, p2 *big.Int) {
 	return d, e, n
 }
 
-func DigitSign(m string, e, n *big.Int) *big.Int {
-	hash := Hashing(m)
+func DigitSign(mess string, e, n *big.Int) *big.Int {
+	hash := Hashing(mess)
 	return new(big.Int).Exp(hash, e, n)
 }
 
-func Verification(m string, c, d, n *big.Int) bool {
+func Verification(mess string, c, d, n *big.Int) bool {
 	hashMess := new(big.Int).Exp(c, d, n)
-	hash := Hashing(m)
+	hash := Hashing(mess)
 	if hashMess.String() == hash.String() {
 		return true
 	} else {
@@ -44,7 +44,7 @@ func Verification(m string, c, d, n *big.Int) bool {
 	}
 }
 
-func Hashing(m string) *big.Int {
-	hashMess := sha256.Sum256([]byte(m))
+func Hashing(mess string) *big.Int {
+	hashMess := sha256.Sum256([]byte(mess))
 	return new(big.Int).SetBytes(hashMess[:])
 }

@@ -17,7 +17,7 @@ func TestDigSign() {
 	mess1 = string(bytes)
 
 	var length int
-	fmt.Print("- Enter key length (256/512/1024) for GenKey: ")
+	fmt.Print("- Enter key length (128/256/512/1024 hex bytes) for GenKey: ")
 	fmt.Scanln(&length)
 
 	d, e, n := RSA.GenKey(length)
