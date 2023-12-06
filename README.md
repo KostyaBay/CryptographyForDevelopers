@@ -23,3 +23,7 @@
 6. **Реалізація алгоритму цифрового підпису** 
 
 [DigitalSignature](https://github.com/KostyaBay/CryptographyForDevelopers/tree/main/DigitalSignature "DigitalSignature") - Реалізація RSA, або ECDSA, або Schnorr, або Ring traceable signatures; тестування та демонстрація роботи.
+
+7. **Алгоритм Ель-Гамаля. Цифровий підпис. Спрямоване шифрування** 
+
+[ElGamal](https://github.com/KostyaBay/CryptographyForDevelopers/tree/main/ElGamal "ElGamal") - Власна реалізація цифрового підпису, власна реалізація спрямованого шифрування, перевірка коректності реалізації.
