@@ -6,42 +6,64 @@ import (
 	"math/big"
 )
 
-func GenKey(keyLength int) (sk1, pk1, p2 *big.Int) {
-	var p, q, n, d, e, fEuler *big.Int
+var bigOne = big.NewInt(1)
+var bigNul = big.NewInt(0)
 
-	var bigOne = big.NewInt(1)
+func GenKey(keyLength int) (pk1, pk2, pk3, sk *big.Int) {
+	var p, g, x, y *big.Int
 
+	if 2048 <= keyLength && keyLength <= 4096 {
+		for true {
+			p, _ = rand.Prime(rand.Reader, keyLength)
+			g, _ = rand.Int(rand.Reader, p)
+			x, _ = rand.Int(rand.Reader, new(big.Int).Sub(p, bigOne))
+
+			if x.Cmp(bigOne) == 1 {
+				break
+			}
+		}
+	} else {
+		return nil, nil, nil, nil
+	}
+
+	y = new(big.Int).Exp(g, x, p)
+
+	return p, g, y, x
+}
+
+func DigitSign(mess string, p, g, x *big.Int) (ds1, ds2 *big.Int) {
+	hash := Hashing(mess)
+	var k, r, s *big.Int
 	for true {
-		p, _ = rand.Prime(rand.Reader, keyLength)
-		q, _ = rand.Prime(rand.Reader, keyLength)
+		k, _ = rand.Int(rand.Reader, new(big.Int).Sub(p, bigOne))
 
-		fEuler = new(big.Int).Mul(new(big.Int).Sub(p, bigOne), new(big.Int).Sub(q, bigOne))
-		e, _ = rand.Int(rand.Reader, fEuler)
-
-		if e.Cmp(fEuler) == -1 && e.Cmp(bigOne) == 1 && new(big.Int).GCD(nil, nil, e, fEuler).String() == "1" {
+		if k.Cmp(new(big.Int).Sub(p, bigOne)) == -1 && k.Cmp(bigOne) == 1 && new(big.Int).GCD(nil, nil, k, new(big.Int).Sub(p, bigOne)).String() == "1" {
 			break
 		}
 	}
 
-	n = new(big.Int).Mul(p, q)
-	d = new(big.Int).ModInverse(e, fEuler)
+	r = new(big.Int).Exp(g, k, p)
+	s = new(big.Int).Mod(new(big.Int).Mul(
+		new(big.Int).Sub(
+			hash,
+			new(big.Int).Mul(x, r)),
+		new(big.Int).ModInverse(
+			k,
+			new(big.Int).Sub(p, bigOne))), new(big.Int).Sub(p, bigOne))
 
-	return d, e, n
+	return r, s
 }
 
-func DigitSign(mess string, e, n *big.Int) *big.Int {
-	hash := Hashing(mess)
-	return new(big.Int).Exp(hash, e, n)
-}
-
-func Verification(mess string, c, d, n *big.Int) bool {
-	hashMess := new(big.Int).Exp(c, d, n)
-	hash := Hashing(mess)
-	if hashMess.String() == hash.String() {
-		return true
-	} else {
-		return false
+func Verification(mess string, p, g, y, r, s *big.Int) bool {
+	if r.Cmp(p) == -1 && r.Cmp(bigNul) == 1 && s.Cmp(new(big.Int).Sub(p, bigOne)) == -1 && s.Cmp(bigNul) == 1 {
+		hash := Hashing(mess)
+		left := new(big.Int).Mod(new(big.Int).Mul(new(big.Int).Exp(y, r, p), new(big.Int).Exp(r, s, p)), p)
+		right := new(big.Int).Exp(g, hash, p)
+		if left.String() == right.String() {
+			return true
+		}
 	}
+	return false
 }
 
 func Hashing(mess string) *big.Int {
