@@ -1,4 +1,4 @@
-# CryptographyForDevelopers
+![4096_Ftest_DS](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/23c6aba6-b1e8-40a8-9469-2bc7dadff03a)# CryptographyForDevelopers
 #### Distributed Lab
 
 Алгоритм Ель-Гамаля. Цифровий підпис. Спрямоване шифрування
@@ -36,6 +36,20 @@
 | ● Тест генерації ключів | Test_KeyGen(length int) |:heavy_check_mark:|
 | ● Тест використання ЦП | Test_DigitSign(p, g, y, x *big.Int) |:heavy_check_mark:|
 | ● Тест шифрування/розшифрування | Test_Encrypt(p, g, y, x *big.Int) |:heavy_check_mark:|
+
+Приклад генерації ключів (довжиною 4096 бітів):
+![4096_test_KeyGen](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/a8ef28e3-b7d0-470c-85ed-6ec4f253ad4f)
+
+Приклад підпису та верифікації повідомлення *"Message for test!"*:
+![4096_test_DS](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/b9b77772-0aca-4921-b914-9e378659731c)
+
+Приклад спрямованого шифрування повідомлення:
+![4096_test_encrypt](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/42a2887b-1695-4f3f-a18c-86219cad948b)
+
+Приклад верифікації пошкодженого повідомлення:
+![4096_Ftest_DS](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/41089ffb-ef1c-4145-8d7c-11990fbe04d2)
+
+Частини даних ключів, підпису та шифротексту розділені " ; ".
 
 Для запуску коду потрібно:
 -
