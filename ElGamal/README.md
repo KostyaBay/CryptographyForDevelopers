@@ -1,4 +1,4 @@
-![4096_Ftest_DS](https://github.com/KostyaBay/CryptographyForDevelopers/assets/54154093/23c6aba6-b1e8-40a8-9469-2bc7dadff03a)# CryptographyForDevelopers
+# CryptographyForDevelopers
 #### Distributed Lab
 
 Алгоритм Ель-Гамаля. Цифровий підпис. Спрямоване шифрування
